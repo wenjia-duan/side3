@@ -3,21 +3,20 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>认识正确的自己 - Gavin@Hexo</title>
+  <title>Paxos从理论到实践(一) - Gavin@Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="开局一张图 一个调查最近看到Fenng的一片公众号文章，说的是约有66.6%的开发者认为自己的水平要高于平均水平。这样导致的问题就是：  大部分互联网从业者认为自己的水平比同事高。 大部分互联网从业者认为自己的薪酬与自己的水平不匹配。  所谓问题，就是“期望与现实的差距”，这也是我们大部分人焦虑的来源。 自省同样的问题应用到自己身上，或许自己现在的状态应该是在“绝望之谷”吧。不过，好在前方就是“开">
+  <meta name="description" content="##前言这一系列文章是笔者学习和实现paxos协议的心得和体会。初步计划包含如下几个部分：  理解paxos协议 phxpaxos源码学习 实现自己的paxos版本  此为第一篇：初识paxos #初识paxos ##什么是paxos">
+<meta name="keywords" content="paxos;phxpaxos;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="认识正确的自己">
-<meta property="og:url" content="https://side3.site/2019/04/30/认识正确的自己/index.html">
+<meta property="og:title" content="Paxos从理论到实践(一)">
+<meta property="og:url" content="https://side3.site/2019/05/14/PhxPaxos-源码学习-一/index.html">
 <meta property="og:site_name" content="Gavin@Hexo">
-<meta property="og:description" content="开局一张图 一个调查最近看到Fenng的一片公众号文章，说的是约有66.6%的开发者认为自己的水平要高于平均水平。这样导致的问题就是：  大部分互联网从业者认为自己的水平比同事高。 大部分互联网从业者认为自己的薪酬与自己的水平不匹配。  所谓问题，就是“期望与现实的差距”，这也是我们大部分人焦虑的来源。 自省同样的问题应用到自己身上，或许自己现在的状态应该是在“绝望之谷”吧。不过，好在前方就是“开">
+<meta property="og:description" content="##前言这一系列文章是笔者学习和实现paxos协议的心得和体会。初步计划包含如下几个部分：  理解paxos协议 phxpaxos源码学习 实现自己的paxos版本  此为第一篇：初识paxos #初识paxos ##什么是paxos">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://wiki.mbalib.com/w/images/3/3f/%E9%82%93%E5%AE%81-%E5%85%8B%E9%B2%81%E6%A0%BC%E6%95%88%E5%BA%94.jpg">
-<meta property="og:updated_time" content="2019-04-30T15:42:08.686Z">
+<meta property="og:updated_time" content="2019-05-13T16:23:17.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="认识正确的自己">
-<meta name="twitter:description" content="开局一张图 一个调查最近看到Fenng的一片公众号文章，说的是约有66.6%的开发者认为自己的水平要高于平均水平。这样导致的问题就是：  大部分互联网从业者认为自己的水平比同事高。 大部分互联网从业者认为自己的薪酬与自己的水平不匹配。  所谓问题，就是“期望与现实的差距”，这也是我们大部分人焦虑的来源。 自省同样的问题应用到自己身上，或许自己现在的状态应该是在“绝望之谷”吧。不过，好在前方就是“开">
-<meta name="twitter:image" content="https://wiki.mbalib.com/w/images/3/3f/%E9%82%93%E5%AE%81-%E5%85%8B%E9%B2%81%E6%A0%BC%E6%95%88%E5%BA%94.jpg">
+<meta name="twitter:title" content="Paxos从理论到实践(一)">
+<meta name="twitter:description" content="##前言这一系列文章是笔者学习和实现paxos协议的心得和体会。初步计划包含如下几个部分：  理解paxos协议 phxpaxos源码学习 实现自己的paxos版本  此为第一篇：初识paxos #初识paxos ##什么是paxos">
   
   
     <link rel="icon" href="/favicon.png">
@@ -62,7 +61,7 @@
 </header>
 
     <br>
-    <section id="main" class="outer"><article id="post-认识正确的自己" class="article article-type-post" itemscope itemprop="blogPost">
+    <section id="main" class="outer"><article id="post-PhxPaxos-源码学习-一" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -70,8 +69,8 @@
         
   
     <h1 class="article-title" itemprop="name">
-      认识正确的自己
-      <small class="article-detail-date-index">&nbsp; 2019-04-30</small>
+      Paxos从理论到实践(一)
+      <small class="article-detail-date-index">&nbsp; 2019-05-14</small>
     </h1>
   
 
@@ -81,8 +80,8 @@
       </header>
     
     <div class="article-meta">
-      <!--<a href="/side3/2019/04/30/认识正确的自己/" class="article-date">
-  <time datetime="2019-04-30T15:20:59.000Z" itemprop="datePublished">2019-04-30</time>
+      <!--<a href="/side3/2019/05/14/PhxPaxos-源码学习-一/" class="article-date">
+  <time datetime="2019-05-13T16:11:27.000Z" itemprop="datePublished">2019-05-14</time>
 </a>-->
       <!-- 
 --><!-- by blair 160724 -->
@@ -92,14 +91,15 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="开局一张图"><a href="#开局一张图" class="headerlink" title="开局一张图"></a>开局一张图</h1><p><img src="https://wiki.mbalib.com/w/images/3/3f/%E9%82%93%E5%AE%81-%E5%85%8B%E9%B2%81%E6%A0%BC%E6%95%88%E5%BA%94.jpg" alt="达克效应"></p>
-<h1 id="一个调查"><a href="#一个调查" class="headerlink" title="一个调查"></a>一个调查</h1><p>最近看到Fenng的一片公众号文章，说的是约有66.6%的开发者认为自己的水平要高于平均水平。<br>这样导致的问题就是：</p>
-<ol>
-<li>大部分互联网从业者认为自己的水平比同事高。</li>
-<li>大部分互联网从业者认为自己的薪酬与自己的水平不匹配。</li>
-</ol>
-<p>所谓问题，就是“期望与现实的差距”，这也是我们大部分人焦虑的来源。</p>
-<h1 id="自省"><a href="#自省" class="headerlink" title="自省"></a>自省</h1><p>同样的问题应用到自己身上，或许自己现在的状态应该是在“绝望之谷”吧。<br>不过，好在前方就是“开悟之坡”。<br><strong>Stay stupid, Stay Hungry</strong></p>
+        <p>##前言<br>这一系列文章是笔者学习和实现paxos协议的心得和体会。<br>初步计划包含如下几个部分：</p>
+<ul>
+<li>理解paxos协议</li>
+<li>phxpaxos源码学习</li>
+<li>实现自己的paxos版本</li>
+</ul>
+<p>此为第一篇：初识paxos</p>
+<p>#初识paxos</p>
+<p>##什么是paxos</p>
 
       
      <!-- by blair add this if sentence at 20160725 -->
@@ -141,11 +141,6 @@
     
     </div>
     
-      <div class="article-toc">
-        <h3>Contents</h3>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开局一张图"><span class="toc-number">1.</span> <span class="toc-text">开局一张图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一个调查"><span class="toc-number">2.</span> <span class="toc-text">一个调查</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自省"><span class="toc-number">3.</span> <span class="toc-text">自省</span></a></li></ol>
-      </div>
-    
     
       <footer class="article-footer">
         <!-- <div class="well" style="width:100px; height:30px;"></div>  by blair-->
@@ -155,6 +150,10 @@
         <div style="width:100px; height:30px;"></div> by blair add 160724
         -->
         
+  <div class="article-tag">
+    <a class="article-tag-link" href="/side3/tags/paxos-phxpaxos/">paxos;phxpaxos;</a>
+  </div>
+
 
       </footer>
     
@@ -163,17 +162,9 @@
     
 <nav id="article-nav">
   
-    <a href="/side3/2019/05/14/PhxPaxos-源码学习-一/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-title"><span>&lt;</span>&nbsp;
-        
-          Paxos从理论到实践(一)
-        
-      </div>
-    </a>
   
-  
-    <a href="/side3/2019/04/26/知识管理/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">个人知识管理&nbsp;<span>&gt;</span></div>
+    <a href="/side3/2019/04/30/认识正确的自己/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">认识正确的自己&nbsp;<span>&gt;</span></div>
     </a>
   
 </nav>
