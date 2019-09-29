@@ -2,142 +2,92 @@
 
 
 
-  
 
 
-<html class="theme-next gemini use-motion" lang>
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/side3/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/side3/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/side3/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/side3/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/side3/css/main.css?v=7.4.0">
 
 
+<link rel="stylesheet" href="/side3/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/side3/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
 
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-  <meta name="google-site-verification" content="k-cqP4MGgySpEsY8bfQcevCYdPD9y1BuNjfrvILCHeo">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/side3/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/side3/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/side3/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/side3/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/side3/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/side3/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/side3/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="arts,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="Preface这是我参加极客时间ARTS打卡活动的第2篇blog。由于前段时间工作安排原因，ARTS-0x02, ARTS-03延迟了两周。以下是内容提要：  Algorithm: Rule30 Min-Cost Path Problem Review: “A Hands-on Introduction to OpenMP” Tips: strace观察shell管道的系统调用 Share  Al">
-<meta name="keywords" content="arts">
+  <meta name="description" content="Preface这是我参加极客时间ARTS打卡活动的第2篇blog。由于前段时间工作安排原因，ARTS-0x02, ARTS-03延迟了两周。以下是内容提要：  Algorithm: Rule30 Min-Cost Path Problem Review: “A Hands-on Introduction to OpenMP” Tips: strace观察shell管道的系统调用 Share  Al">
+<meta name="keywords" content="arts,openmp,rule30">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ARTS-0x02">
 <meta property="og:url" content="https://wenjia-duan.github.io/side3/2019/09/12/ARTS-0x02/index.html">
 <meta property="og:site_name" content="Gavin@Hexo">
 <meta property="og:description" content="Preface这是我参加极客时间ARTS打卡活动的第2篇blog。由于前段时间工作安排原因，ARTS-0x02, ARTS-03延迟了两周。以下是内容提要：  Algorithm: Rule30 Min-Cost Path Problem Review: “A Hands-on Introduction to OpenMP” Tips: strace观察shell管道的系统调用 Share  Al">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://mathworld.wolfram.com/images/eps-gif/ElementaryCARule030_1000.gif">
-<meta property="og:updated_time" content="2019-09-29T09:14:55.599Z">
+<meta property="og:updated_time" content="2019-09-29T15:36:05.549Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ARTS-0x02">
 <meta name="twitter:description" content="Preface这是我参加极客时间ARTS打卡活动的第2篇blog。由于前段时间工作安排原因，ARTS-0x02, ARTS-03延迟了两周。以下是内容提要：  Algorithm: Rule30 Min-Cost Path Problem Review: “A Hands-on Introduction to OpenMP” Tips: strace观察shell管道的系统调用 Share  Al">
 <meta name="twitter:image" content="http://mathworld.wolfram.com/images/eps-gif/ElementaryCARule030_1000.gif">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/side3/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
   <link rel="canonical" href="https://wenjia-duan.github.io/side3/2019/09/12/ARTS-0x02/">
 
 
-
-
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
 
   <title>ARTS-0x02 | Gavin@Hexo</title>
   
 
 
-
-
-
-  <script type="text/javascript">
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -150,37 +100,55 @@
 
 
 
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/side3/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Gavin@Hexo</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
         <p class="site-subtitle">gavin的blog</p>
       
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -188,150 +156,182 @@
   </div>
 </div>
 
+
 <nav class="site-nav">
   
-
-  
-    <ul id="menu" class="menu">
+  <ul id="menu" class="menu">
+      
+      
       
         
         <li class="menu-item menu-item-home">
-          <a href="/side3/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            Home
-          </a>
-        </li>
+      
+    
+
+    <a href="/side3/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/side3/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            Tags
-          </a>
-        </li>
+      
+    
+
+    <a href="/side3/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/side3/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            Categories
-          </a>
-        </li>
+      
+    
+
+    <a href="/side3/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/side3/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            Archives
-          </a>
-        </li>
       
+    
 
-      
-    </ul>
-  
+    <a href="/side3/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
-  
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
 
+</div>
+<div class="search-pop-overlay"></div>
 
-
- </div>
+  </div>
+</div>
     </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+            
+
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
-    
-
-  
-
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="https://wenjia-duan.github.io/side3/side3/2019/09/12/ARTS-0x02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wenjia duan">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="中年油腻大叔的日常">
       <meta itemprop="image" content="/side3/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Gavin@Hexo">
     </span>
-
-    
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">ARTS-0x02
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">ARTS-0x02</h1>
-        
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
+              <span class="post-meta-item-text">发表于</span>
+
               
-                <span class="post-meta-item-text">Posted on</span>
+                
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T11:03:06+08:00">
-                2019-09-12
-              </time>
-            
 
-            
-
-            
-          </span>
-
-          
-
+              <time title="创建时间：2019-09-12 11:03:06" itemprop="dateCreated datePublished" datetime="2019-09-12T11:03:06+08:00">2019-09-12</time>
+            </span>
           
             
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-29 23:36:05" itemprop="dateModified" datetime="2019-09-29T23:36:05+08:00">2019-09-29</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/side3/categories/arts/" itemprop="url" rel="index"><span itemprop="name">arts</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
-          
-
-          
-
-          
-
+            <span id="/side3/2019/09/12/ARTS-0x02/" class="post-meta-item leancloud_visitors" data-flag-title="ARTS-0x02" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
           
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
 
       
         <h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>这是我参加极客时间ARTS打卡活动的第2篇blog。<br>由于前段时间工作安排原因，ARTS-0x02, ARTS-03延迟了两周。<br>以下是内容提要：</p>
@@ -367,15 +367,15 @@
 <li>不能过估计(over-estimate): 即 $ h(n) &lt; h^{‘}(n) $ 其中, $ h^{‘}(n) $ 为实际的路径长度<br>简要证明如下(反证法)：<br>设由算法给出的最短路径为$ S(i)={Vi_{1}, Vi_{2}, ….V_{n}} $, 假设存在另一条路径 $ S(j)={Vj_{1}, Vj_{2},….V_{n}} $ 其路径长度比S(i)短。<br>由算法可知，S(j)中至少存在一个节点Vj, 其一定在算法中的OpenSet Q中(因为算法的第一步已经穷举了所有从起点出发的所有相邻节点)。<br>由算法可知，S(i)路径对应的$F(i) = G(i) + H(i)$ 为OpenSet中最小的，即$ F(i) &lt; F(j) = G(j) + H(j) &lt; G(j) + H^{‘}(j) = S(j) $<br>(值得注意的是，不像Djkstra算法，此处并不要求非负的权值边，而只是要求估价函数的值比真实值小。事实上，对于Djkstra算法，非负权值边及H(n)=0是满足该命题的条件的。另外对于含负权值边的图，也可以通过整体做偏移来转化成非负权值边）<br>与假设矛盾，命题得证。</li>
 </ul>
 <p>此处选取估值函数(曼哈顿距离):<br>$$<br>h(n) = abs(r-N) + abs(c-N) (r 为行序号，c为列序号)<br>$$<br>易知该h(n)满足上述条件，因此得出的路径是最短路径。</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="A-算法-1"><a href="#A-算法-1" class="headerlink" title="A*算法"></a>A*算法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import os</span><br><span class="line">import sys   </span><br><span class="line">import copy</span><br><span class="line">import os.path</span><br><span class="line">import heapq</span><br><span class="line">import pickle</span><br><span class="line"></span><br><span class="line">rule = &#123;</span><br><span class="line">    &apos;111&apos; : 0,</span><br><span class="line">    &apos;110&apos; : 0,</span><br><span class="line">    &apos;101&apos; : 0,</span><br><span class="line">    &apos;100&apos; : 1,</span><br><span class="line">    &apos;011&apos; : 1,</span><br><span class="line">    &apos;010&apos; : 1,</span><br><span class="line">    &apos;001&apos; : 1,</span><br><span class="line">    &apos;000&apos; : 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">N = 102</span><br><span class="line"></span><br><span class="line">def getlinept(line, line_wid, column):</span><br><span class="line">    column -= N-line_wid</span><br><span class="line">    if column &gt;= 0 and column &lt; len(line):</span><br><span class="line">        return line[column]</span><br><span class="line">    else:</span><br><span class="line">        return None</span><br><span class="line"></span><br><span class="line">def get_current(last_line, line_width, index):</span><br><span class="line">    bit1 = &apos;1&apos; if getlinept(last_line, line_width, index-1)== 1 else &apos;0&apos;</span><br><span class="line">    bit2 = &apos;1&apos; if getlinept(last_line, line_width, index) == 1 else &apos;0&apos;</span><br><span class="line">    bit3 = &apos;1&apos; if getlinept(last_line, line_width, index+1)== 1 else &apos;0&apos;</span><br><span class="line">    return rule[bit1+bit2+bit3]</span><br><span class="line"></span><br><span class="line">def heuristic_func(row, column):</span><br><span class="line">    return abs(row-N) + abs(N-column)</span><br><span class="line"></span><br><span class="line">def fk(row, column):</span><br><span class="line">    return &quot;%d_%d&quot;%(row, column)</span><br><span class="line"></span><br><span class="line">def pk(key):</span><br><span class="line">    values = key.split(&quot;_&quot;)</span><br><span class="line">    return int(values[0]),int(values[1])</span><br><span class="line"></span><br><span class="line">rule30_lines = &#123;1:[1]&#125;</span><br><span class="line">def get_neighbours(row, column):</span><br><span class="line">    if row &lt; 0 or column &lt; 0 or row &gt;= N or column &gt; 2*N:</span><br><span class="line">        return []</span><br><span class="line"></span><br><span class="line">    global rule30_lines</span><br><span class="line">    next_line = rule30_lines.get(row+1)</span><br><span class="line">    cur_line_wid = min(row-1, N-row)</span><br><span class="line">    next_line_wid = min(row, N-row-1)</span><br><span class="line">    if not next_line:</span><br><span class="line">        # line不存在</span><br><span class="line">        current_line = rule30_lines.get(row)</span><br><span class="line">        if not current_line:</span><br><span class="line">            raise Exception(&quot;last line not exists:%d|%d&quot;%(row, column))</span><br><span class="line"></span><br><span class="line">        next_line = [0]*(2*next_line_wid+1)</span><br><span class="line">        for pt in xrange(N-next_line_wid, N+next_line_wid+1):</span><br><span class="line">            if 1 == get_current(current_line, cur_line_wid, pt):</span><br><span class="line">                next_line[pt-N+next_line_wid] = 1</span><br><span class="line"></span><br><span class="line">        rule30_lines[row+1] = next_line</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    result = []</span><br><span class="line">    if getlinept(next_line, next_line_wid, column) == 1:</span><br><span class="line">        result.append((row+1, column-1, 2))</span><br><span class="line"></span><br><span class="line">    if getlinept(next_line, next_line_wid, column) == 1:</span><br><span class="line">        result.append((row+1, column, 1))</span><br><span class="line"></span><br><span class="line">    if getlinept(next_line, next_line_wid, column + 1) == 1:</span><br><span class="line">        result.append((row+1, column+1, 2))</span><br><span class="line"></span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">def print_trace(trace, min_key):</span><br><span class="line">    last = min_key</span><br><span class="line">    s_path=&quot;&quot;</span><br><span class="line">    while last != fk(1,N):</span><br><span class="line">        s_path += &quot;%s&lt;-&quot;%last</span><br><span class="line">        last = trace[last]</span><br><span class="line">    s_path += last</span><br><span class="line">    return s_path</span><br><span class="line"></span><br><span class="line">def traverse_Astar():</span><br><span class="line">    open_set = []</span><br><span class="line">    close_set = set()</span><br><span class="line">    g_path = &#123;&#125;</span><br><span class="line">    g_path[fk(1,N)] = 0</span><br><span class="line">    trace = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    heapq.heappush(open_set, (0, fk(1,N)))</span><br><span class="line">    </span><br><span class="line">    while  open_set:</span><br><span class="line">        f_value, min_key = heapq.heappop(open_set)</span><br><span class="line">        if min_key == fk(N,N):</span><br><span class="line">            return g_path[min_key] </span><br><span class="line"></span><br><span class="line">        cur_row, cur_col = pk(min_key)</span><br><span class="line">        # get neighbours</span><br><span class="line">        close_set.add(min_key)</span><br><span class="line"></span><br><span class="line">        for nrow, ncolumn, nweight in get_neighbours(cur_row, cur_col):</span><br><span class="line">            if fk(nrow, ncolumn) in close_set:</span><br><span class="line">                continue</span><br><span class="line">            npath = g_path[min_key] + nweight</span><br><span class="line">            nkey = fk(nrow, ncolumn)</span><br><span class="line">            if not g_path.has_key(nkey) or g_path[nkey] &gt; npath:</span><br><span class="line">                g_path[nkey] = npath</span><br><span class="line">                heapq.heappush(open_set, (npath + heuristic_func(nrow, ncolumn), nkey))</span><br><span class="line">                #trace[nkey] = min_key</span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line">    return None </span><br><span class="line"></span><br><span class="line">print(&quot;%s&quot;%traverse_Astar())</span><br></pre></td></tr></table></figure>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="A-算法-1"><a href="#A-算法-1" class="headerlink" title="A*算法"></a>A*算法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys   </span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"><span class="keyword">import</span> os.path</span><br><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line">rule = &#123;</span><br><span class="line">    <span class="string">'111'</span> : <span class="number">0</span>,</span><br><span class="line">    <span class="string">'110'</span> : <span class="number">0</span>,</span><br><span class="line">    <span class="string">'101'</span> : <span class="number">0</span>,</span><br><span class="line">    <span class="string">'100'</span> : <span class="number">1</span>,</span><br><span class="line">    <span class="string">'011'</span> : <span class="number">1</span>,</span><br><span class="line">    <span class="string">'010'</span> : <span class="number">1</span>,</span><br><span class="line">    <span class="string">'001'</span> : <span class="number">1</span>,</span><br><span class="line">    <span class="string">'000'</span> : <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">N = <span class="number">102</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getlinept</span><span class="params">(line, line_wid, column)</span>:</span></span><br><span class="line">    column -= N-line_wid</span><br><span class="line">    <span class="keyword">if</span> column &gt;= <span class="number">0</span> <span class="keyword">and</span> column &lt; len(line):</span><br><span class="line">        <span class="keyword">return</span> line[column]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_current</span><span class="params">(last_line, line_width, index)</span>:</span></span><br><span class="line">    bit1 = <span class="string">'1'</span> <span class="keyword">if</span> getlinept(last_line, line_width, index<span class="number">-1</span>)== <span class="number">1</span> <span class="keyword">else</span> <span class="string">'0'</span></span><br><span class="line">    bit2 = <span class="string">'1'</span> <span class="keyword">if</span> getlinept(last_line, line_width, index) == <span class="number">1</span> <span class="keyword">else</span> <span class="string">'0'</span></span><br><span class="line">    bit3 = <span class="string">'1'</span> <span class="keyword">if</span> getlinept(last_line, line_width, index+<span class="number">1</span>)== <span class="number">1</span> <span class="keyword">else</span> <span class="string">'0'</span></span><br><span class="line">    <span class="keyword">return</span> rule[bit1+bit2+bit3]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">heuristic_func</span><span class="params">(row, column)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> abs(row-N) + abs(N-column)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fk</span><span class="params">(row, column)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"%d_%d"</span>%(row, column)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pk</span><span class="params">(key)</span>:</span></span><br><span class="line">    values = key.split(<span class="string">"_"</span>)</span><br><span class="line">    <span class="keyword">return</span> int(values[<span class="number">0</span>]),int(values[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">rule30_lines = &#123;<span class="number">1</span>:[<span class="number">1</span>]&#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_neighbours</span><span class="params">(row, column)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> row &lt; <span class="number">0</span> <span class="keyword">or</span> column &lt; <span class="number">0</span> <span class="keyword">or</span> row &gt;= N <span class="keyword">or</span> column &gt; <span class="number">2</span>*N:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> rule30_lines</span><br><span class="line">    next_line = rule30_lines.get(row+<span class="number">1</span>)</span><br><span class="line">    cur_line_wid = min(row<span class="number">-1</span>, N-row)</span><br><span class="line">    next_line_wid = min(row, N-row<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> next_line:</span><br><span class="line">        <span class="comment"># line不存在</span></span><br><span class="line">        current_line = rule30_lines.get(row)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> current_line:</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">"last line not exists:%d|%d"</span>%(row, column))</span><br><span class="line"></span><br><span class="line">        next_line = [<span class="number">0</span>]*(<span class="number">2</span>*next_line_wid+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> pt <span class="keyword">in</span> xrange(N-next_line_wid, N+next_line_wid+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="number">1</span> == get_current(current_line, cur_line_wid, pt):</span><br><span class="line">                next_line[pt-N+next_line_wid] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        rule30_lines[row+<span class="number">1</span>] = next_line</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    result = []</span><br><span class="line">    <span class="keyword">if</span> getlinept(next_line, next_line_wid, column) == <span class="number">1</span>:</span><br><span class="line">        result.append((row+<span class="number">1</span>, column<span class="number">-1</span>, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> getlinept(next_line, next_line_wid, column) == <span class="number">1</span>:</span><br><span class="line">        result.append((row+<span class="number">1</span>, column, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> getlinept(next_line, next_line_wid, column + <span class="number">1</span>) == <span class="number">1</span>:</span><br><span class="line">        result.append((row+<span class="number">1</span>, column+<span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_trace</span><span class="params">(trace, min_key)</span>:</span></span><br><span class="line">    last = min_key</span><br><span class="line">    s_path=<span class="string">""</span></span><br><span class="line">    <span class="keyword">while</span> last != fk(<span class="number">1</span>,N):</span><br><span class="line">        s_path += <span class="string">"%s&lt;-"</span>%last</span><br><span class="line">        last = trace[last]</span><br><span class="line">    s_path += last</span><br><span class="line">    <span class="keyword">return</span> s_path</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">traverse_Astar</span><span class="params">()</span>:</span></span><br><span class="line">    open_set = []</span><br><span class="line">    close_set = set()</span><br><span class="line">    g_path = &#123;&#125;</span><br><span class="line">    g_path[fk(<span class="number">1</span>,N)] = <span class="number">0</span></span><br><span class="line">    trace = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    heapq.heappush(open_set, (<span class="number">0</span>, fk(<span class="number">1</span>,N)))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>  open_set:</span><br><span class="line">        f_value, min_key = heapq.heappop(open_set)</span><br><span class="line">        <span class="keyword">if</span> min_key == fk(N,N):</span><br><span class="line">            <span class="keyword">return</span> g_path[min_key] </span><br><span class="line"></span><br><span class="line">        cur_row, cur_col = pk(min_key)</span><br><span class="line">        <span class="comment"># get neighbours</span></span><br><span class="line">        close_set.add(min_key)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> nrow, ncolumn, nweight <span class="keyword">in</span> get_neighbours(cur_row, cur_col):</span><br><span class="line">            <span class="keyword">if</span> fk(nrow, ncolumn) <span class="keyword">in</span> close_set:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            npath = g_path[min_key] + nweight</span><br><span class="line">            nkey = fk(nrow, ncolumn)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> g_path.has_key(nkey) <span class="keyword">or</span> g_path[nkey] &gt; npath:</span><br><span class="line">                g_path[nkey] = npath</span><br><span class="line">                heapq.heappush(open_set, (npath + heuristic_func(nrow, ncolumn), nkey))</span><br><span class="line">                <span class="comment">#trace[nkey] = min_key</span></span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span> </span><br><span class="line"></span><br><span class="line">print(<span class="string">"%s"</span>%traverse_Astar())</span><br></pre></td></tr></table></figure>
 <h3 id="A-算法的问题"><a href="#A-算法的问题" class="headerlink" title="A*算法的问题"></a>A*算法的问题</h3><p>由于A* 算法可能需要反复随机访问第k行的数据，因此需要保存Rule30图的权值表，其空间复杂度为$O(N^2)$, 显然对于N=1000003，这是无法接受的。<br>考虑到每个节点只和相邻下一行的节点连接，且最多连接3个节点，因此考虑使用动态规划。<br>设 S(j,k) 为起点到第j行，k列的节点的最短路径，则  S(j,k) = min(S(j-1,k-1)+2, S(j-1,k)+1, S(j-1, k+1)+2)<br>采用此算法，则空间复杂度可降至O(N), 即只需存储当前行及上一行，但是时间复杂度仍高达$O(N^2)$<br>为了加速计算过程，可考虑如下优化：</p>
 <ol>
 <li>rule30节点计算可简化为 a xor (b and c) <a href="#1-使用卡诺图优化Rule30计算" title="附录1">[采用真值表及卡诺图, 分析过程略]</a></li>
 <li>可使用OpenMP加速计算</li>
 </ol>
-<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><h4 id="版本V1"><a href="#版本V1" class="headerlink" title="版本V1:"></a>版本V1:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;climits&gt;</span><br><span class="line"></span><br><span class="line">const int N = 1000003;</span><br><span class="line">unsigned int last_line[2*N+1] = &#123;0&#125;;</span><br><span class="line">unsigned int current_line[2*N+1] = &#123;0&#125;;</span><br><span class="line"></span><br><span class="line">int main(int argc, char* argv[])</span><br><span class="line">&#123;</span><br><span class="line">    unsigned int *pLastLine = last_line;</span><br><span class="line">    unsigned int *pCurrentLine = current_line;</span><br><span class="line">    pLastLine[N] = 1;</span><br><span class="line">    for(int i=1; i&lt;N; ++i)&#123;</span><br><span class="line">        int width = std::min(i,N-i);</span><br><span class="line">        for(int j=N-width; j&lt;=N+width; ++j)&#123;</span><br><span class="line">            if((0 != pLastLine[j-1]) ^ ((0 != pLastLine[j]) | (0 != pLastLine[j+1])))&#123;</span><br><span class="line">                pCurrentLine[j] = std::min(</span><br><span class="line">                         (0 == pLastLine[j-1])?UINT_MAX:(pLastLine[j-1]+2),</span><br><span class="line">                         std::min(</span><br><span class="line">                            (0 == pLastLine[j])?UINT_MAX:(pLastLine[j]+1),</span><br><span class="line">                            (0 == pLastLine[j+1])?UINT_MAX:(pLastLine[j+1]+2)</span><br><span class="line">                            )</span><br><span class="line">                        );</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                pCurrentLine[j] = 0;</span><br><span class="line">            &#125;</span><br><span class="line">            //printf(&quot;current_line[%d][%d]:%u\n&quot;, i, j, pCurrentLine[j]);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        unsigned int* pTmp  = pLastLine;</span><br><span class="line">        pLastLine = pCurrentLine;</span><br><span class="line">        pCurrentLine =pTmp;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;min_path:%u\n&quot;, pLastLine[N]-1);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><h4 id="版本V1"><a href="#版本V1" class="headerlink" title="版本V1:"></a>版本V1:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;climits&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000003</span>;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> last_line[<span class="number">2</span>*N+<span class="number">1</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> current_line[<span class="number">2</span>*N+<span class="number">1</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> *pLastLine = last_line;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> *pCurrentLine = current_line;</span><br><span class="line">    pLastLine[N] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;N; ++i)&#123;</span><br><span class="line">        <span class="keyword">int</span> width = <span class="built_in">std</span>::min(i,N-i);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=N-width; j&lt;=N+width; ++j)&#123;</span><br><span class="line">            <span class="keyword">if</span>((<span class="number">0</span> != pLastLine[j<span class="number">-1</span>]) ^ ((<span class="number">0</span> != pLastLine[j]) | (<span class="number">0</span> != pLastLine[j+<span class="number">1</span>])))&#123;</span><br><span class="line">                pCurrentLine[j] = <span class="built_in">std</span>::min(</span><br><span class="line">                         (<span class="number">0</span> == pLastLine[j<span class="number">-1</span>])?UINT_MAX:(pLastLine[j<span class="number">-1</span>]+<span class="number">2</span>),</span><br><span class="line">                         <span class="built_in">std</span>::min(</span><br><span class="line">                            (<span class="number">0</span> == pLastLine[j])?UINT_MAX:(pLastLine[j]+<span class="number">1</span>),</span><br><span class="line">                            (<span class="number">0</span> == pLastLine[j+<span class="number">1</span>])?UINT_MAX:(pLastLine[j+<span class="number">1</span>]+<span class="number">2</span>)</span><br><span class="line">                            )</span><br><span class="line">                        );</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                pCurrentLine[j] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//printf("current_line[%d][%d]:%u\n", i, j, pCurrentLine[j]);</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">int</span>* pTmp  = pLastLine;</span><br><span class="line">        pLastLine = pCurrentLine;</span><br><span class="line">        pCurrentLine =pTmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"min_path:%u\n"</span>, pLastLine[N]<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上述V1版本(Debug)在N=1000003阶的运行时间约为2.5个小时。 算法可行但是效果不是很理想，继续优化。<br>注意到内循环相关性不强，可以使用OpenMP的loop优化</p>
-<h4 id="版本V2-OpenMP版本"><a href="#版本V2-OpenMP版本" class="headerlink" title="版本V2: OpenMP版本"></a>版本V2: OpenMP版本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;climits&gt;</span><br><span class="line"></span><br><span class="line">const int N = 1000003;</span><br><span class="line">unsigned int last_line[2*N+1] = &#123;0&#125;;</span><br><span class="line">unsigned int current_line[2*N+1] = &#123;0&#125;;</span><br><span class="line"></span><br><span class="line">int main(int argc, char* argv[])</span><br><span class="line">&#123;</span><br><span class="line">    unsigned int *pLastLine = last_line;</span><br><span class="line">    unsigned int *pCurrentLine = current_line;</span><br><span class="line">    pLastLine[N] = 1;</span><br><span class="line">    for(int i=1; i&lt;N; ++i)&#123;</span><br><span class="line">        int width = std::min(i,N-i);</span><br><span class="line">        int j = 0;</span><br><span class="line">#pragma omp parallel for private(j)</span><br><span class="line">        for(j=N-width; j&lt;=N+width; ++j)&#123;</span><br><span class="line">            pCurrentLine[j] = ((0 != pLastLine[j-1]) ^ ((0 != pLastLine[j]) | (0 != pLastLine[j+1]))) ? (</span><br><span class="line">                 std::min(</span><br><span class="line">                         (0 == pLastLine[j-1])?UINT_MAX:(pLastLine[j-1]+2),</span><br><span class="line">                         std::min(</span><br><span class="line">                            (0 == pLastLine[j])?UINT_MAX:(pLastLine[j]+1),</span><br><span class="line">                            (0 == pLastLine[j+1])?UINT_MAX:(pLastLine[j+1]+2)</span><br><span class="line">                            )</span><br><span class="line">                        )) : 0;</span><br><span class="line">            //printf(&quot;current_line[%d][%d]:%u\n&quot;, i, j, pCurrentLine[j]);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        unsigned int* pTmp  = pLastLine;</span><br><span class="line">        pLastLine = pCurrentLine;</span><br><span class="line">        pCurrentLine =pTmp;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;min_path:%u\n&quot;, pLastLine[N]-1);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="版本V2-OpenMP版本"><a href="#版本V2-OpenMP版本" class="headerlink" title="版本V2: OpenMP版本"></a>版本V2: OpenMP版本</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;climits&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000003</span>;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> last_line[<span class="number">2</span>*N+<span class="number">1</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> current_line[<span class="number">2</span>*N+<span class="number">1</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> *pLastLine = last_line;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> *pCurrentLine = current_line;</span><br><span class="line">    pLastLine[N] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;N; ++i)&#123;</span><br><span class="line">        <span class="keyword">int</span> width = <span class="built_in">std</span>::min(i,N-i);</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp parallel for private(j)</span></span><br><span class="line">        <span class="keyword">for</span>(j=N-width; j&lt;=N+width; ++j)&#123;</span><br><span class="line">            pCurrentLine[j] = ((<span class="number">0</span> != pLastLine[j<span class="number">-1</span>]) ^ ((<span class="number">0</span> != pLastLine[j]) | (<span class="number">0</span> != pLastLine[j+<span class="number">1</span>]))) ? (</span><br><span class="line">                 <span class="built_in">std</span>::min(</span><br><span class="line">                         (<span class="number">0</span> == pLastLine[j<span class="number">-1</span>])?UINT_MAX:(pLastLine[j<span class="number">-1</span>]+<span class="number">2</span>),</span><br><span class="line">                         <span class="built_in">std</span>::min(</span><br><span class="line">                            (<span class="number">0</span> == pLastLine[j])?UINT_MAX:(pLastLine[j]+<span class="number">1</span>),</span><br><span class="line">                            (<span class="number">0</span> == pLastLine[j+<span class="number">1</span>])?UINT_MAX:(pLastLine[j+<span class="number">1</span>]+<span class="number">2</span>)</span><br><span class="line">                            )</span><br><span class="line">                        )) : <span class="number">0</span>;</span><br><span class="line">            <span class="comment">//printf("current_line[%d][%d]:%u\n", i, j, pCurrentLine[j]);</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">int</span>* pTmp  = pLastLine;</span><br><span class="line">        pLastLine = pCurrentLine;</span><br><span class="line">        pCurrentLine =pTmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"min_path:%u\n"</span>, pLastLine[N]<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>使用OpenMP优化后的效果很明显，N=1000003阶计算时间降为约26min(题主测试机器为8核机器)</p>
 <blockquote>
 <p>real    26m0.064s<br>user    206m29.624s<br>sys     0m4.960s</p>
@@ -397,7 +397,7 @@
 <ul>
 <li>它包含一组为并行编程开发者准备的编译器指令及库</li>
 <li><p>极大的简化了Fortran,C,C++多线程程序(MT)的编写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#pragma omp critical</span><br><span class="line">CALL_OMP_SET_NUM_THREADS(10)</span><br><span class="line">omp_set_lock(lck)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp critical</span></span><br><span class="line">CALL_OMP_SET_NUM_THREADS(<span class="number">10</span>)</span><br><span class="line">omp_set_lock(lck)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>标准化了过去20年内的SMP(Symmetric MultiProcessing)实践</p>
 </li>
@@ -412,7 +412,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="练习1"><a href="#练习1" class="headerlink" title="练习1"></a>练习1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;stdio.h&quot;</span><br><span class="line">#include &quot;omp.h&quot;</span><br><span class="line"></span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">#pragma omp parallel</span><br><span class="line">&#123;</span><br><span class="line">	int ID = omp_get_thread_num();</span><br><span class="line">	printf(&quot;hello(%d)&quot;, ID);</span><br><span class="line">	printf(&quot;world(%d)&quot;, ID);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="练习1"><a href="#练习1" class="headerlink" title="练习1"></a>练习1</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"omp.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp parallel</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> ID = omp_get_thread_num();</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"hello(%d)"</span>, ID);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"world(%d)"</span>, ID);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>编译指令：<code>gcc -fopenmp -o main main.cpp</code></p>
 <blockquote>
 <p>参考输出：hello(7)hello(0)world(7)world(0)hello(2)world(2)hello(5)world(5)hello(6)world(6)hello(1)world(1)hello(4)world(4)hello(3)world(3）</p>
@@ -432,7 +432,7 @@
 </ul>
 <h3 id="OpenMP线程创建-并行区域"><a href="#OpenMP线程创建-并行区域" class="headerlink" title="OpenMP线程创建:并行区域"></a>OpenMP线程创建:并行区域</h3><ul>
 <li><p>你可以使用OpenMP 命令(constructs)来创建OpenMP线程<br>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">double A[1000];</span><br><span class="line">omp_get_num_threads(4);</span><br><span class="line">#pragma omp parallel</span><br><span class="line">&#123;</span><br><span class="line">	int ID = omp_get_thread_num();</span><br><span class="line">	pooh(ID, A);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> A[<span class="number">1000</span>];</span><br><span class="line">omp_get_num_threads(<span class="number">4</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp parallel</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> ID = omp_get_thread_num();</span><br><span class="line">	pooh(ID, A);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>每个线程都调用pooh(ID,A) 函数，ID: 0到3</p>
 </li>
@@ -442,8 +442,8 @@
 <p>$$<br>\int^{1}_{0}{\frac{4.0}{(1+x^2)}}dx=\pi<br>$$</p>
 <p>我们可以把上述的积分近似为一系列矩形的和:</p>
 <p>$$<br>\sum_{i=0}^N{F(x_i)\delta{x}} \approx \pi<br>$$</p>
-<p>每个矩形的宽度为$\delta x$, 高度为$F(x_i)$, $x_i$为第i个块的中值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">static long num_steps = 100000;</span><br><span class="line">double step;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">	int i; double x, pi, sum = 0.0f;</span><br><span class="line">	step = 1.0f/(double)num_steps;</span><br><span class="line">	for(i=0;i&lt;num_steps;i++)&#123;</span><br><span class="line">		x=(i+0.5)*step;</span><br><span class="line">		sum += 4.0/(1.0+x*x);</span><br><span class="line">	&#125;</span><br><span class="line">	pi = step*sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>openmp 版本, 需要注意的是i,及x变量的声明位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;omp.h&gt;</span><br><span class="line"></span><br><span class="line">static long num_steps = 100000;</span><br><span class="line">#define num_threads 4</span><br><span class="line">double step;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    double pi, sum;</span><br><span class="line">    double sums[num_threads] = &#123;0.0f&#125;;</span><br><span class="line">    step = 1.0f/(double)num_steps;</span><br><span class="line">    omp_set_num_threads(num_threads);</span><br><span class="line">#pragma omp parallel</span><br><span class="line">    &#123;</span><br><span class="line">        int i; </span><br><span class="line">        double x=0;</span><br><span class="line">        int index=omp_get_thread_num();</span><br><span class="line">        int count=num_steps/num_threads;</span><br><span class="line">        for(i=index*count;i&lt;index*count+count;i++)&#123;</span><br><span class="line">            x=(i+0.5f)*step;</span><br><span class="line">            sums[index] += 4.0/(1.0+x*x);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;thread:%d, start:%d, end:%d, sum:%f\n&quot;, index, index*count, index*count+count, sums[index]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for(int j=0;j&lt;num_threads; ++j)</span><br><span class="line">        sum += sums[j];</span><br><span class="line">    pi = step*sum;</span><br><span class="line">    printf(&quot;pi:%f\n&quot;, pi);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>每个矩形的宽度为$\delta x$, 高度为$F(x_i)$, $x_i$为第i个块的中值。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">long</span> num_steps = <span class="number">100000</span>;</span><br><span class="line"><span class="keyword">double</span> step;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i; <span class="keyword">double</span> x, pi, sum = <span class="number">0.0f</span>;</span><br><span class="line">	step = <span class="number">1.0f</span>/(<span class="keyword">double</span>)num_steps;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;num_steps;i++)&#123;</span><br><span class="line">		x=(i+<span class="number">0.5</span>)*step;</span><br><span class="line">		sum += <span class="number">4.0</span>/(<span class="number">1.0</span>+x*x);</span><br><span class="line">	&#125;</span><br><span class="line">	pi = step*sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>openmp 版本, 需要注意的是i,及x变量的声明位置<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;omp.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">long</span> num_steps = <span class="number">100000</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> num_threads 4</span></span><br><span class="line"><span class="keyword">double</span> step;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> pi, sum;</span><br><span class="line">    <span class="keyword">double</span> sums[num_threads] = &#123;<span class="number">0.0f</span>&#125;;</span><br><span class="line">    step = <span class="number">1.0f</span>/(<span class="keyword">double</span>)num_steps;</span><br><span class="line">    omp_set_num_threads(num_threads);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp parallel</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> i; </span><br><span class="line">        <span class="keyword">double</span> x=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> index=omp_get_thread_num();</span><br><span class="line">        <span class="keyword">int</span> count=num_steps/num_threads;</span><br><span class="line">        <span class="keyword">for</span>(i=index*count;i&lt;index*count+count;i++)&#123;</span><br><span class="line">            x=(i+<span class="number">0.5f</span>)*step;</span><br><span class="line">            sums[index] += <span class="number">4.0</span>/(<span class="number">1.0</span>+x*x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"thread:%d, start:%d, end:%d, sum:%f\n"</span>, index, index*count, index*count+count, sums[index]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;num_threads; ++j)</span><br><span class="line">        sum += sums[j];</span><br><span class="line">    pi = step*sum;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"pi:%f\n"</span>, pi);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="同步机制"><a href="#同步机制" class="headerlink" title="同步机制"></a>同步机制</h2><p>同步机制用来在并行线程间施加执行顺序的约束以及保护数据访问。</p>
 <h3 id="高级别的同步"><a href="#高级别的同步" class="headerlink" title="高级别的同步"></a>高级别的同步</h3><ul>
 <li>临界区(critical)</li>
@@ -455,7 +455,7 @@
 <li>flush</li>
 <li>锁(简单锁及嵌套锁)</li>
 </ul>
-<h3 id="临界区-critical"><a href="#临界区-critical" class="headerlink" title="临界区(critical)"></a>临界区(critical)</h3><p>互斥锁：一次只有一个线程可以进入一个临界区<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">float res;</span><br><span class="line">#pragma omp parallel</span><br><span class="line">&#123;</span><br><span class="line">	float B; int i,id, nthrds;</span><br><span class="line">	id = omp_get_thread_num();</span><br><span class="line">	nthds = omp_get_num_threads();</span><br><span class="line">	for(i=id; i&lt;niters;i+nthrds)&#123;</span><br><span class="line">		B=big_job(i);</span><br><span class="line">#pragma omp critical</span><br><span class="line">	Consume(B, res);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="临界区-critical"><a href="#临界区-critical" class="headerlink" title="临界区(critical)"></a>临界区(critical)</h3><p>互斥锁：一次只有一个线程可以进入一个临界区<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> res;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp parallel</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">float</span> B; <span class="keyword">int</span> i,id, nthrds;</span><br><span class="line">	id = omp_get_thread_num();</span><br><span class="line">	nthds = omp_get_num_threads();</span><br><span class="line">	<span class="keyword">for</span>(i=id; i&lt;niters;i+nthrds)&#123;</span><br><span class="line">		B=big_job(i);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp critical</span></span><br><span class="line">	Consume(B, res);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="原子操作-Atomic"><a href="#原子操作-Atomic" class="headerlink" title="原子操作(Atomic)"></a>原子操作(Atomic)</h3><p>原子操作提供了一种只在内存更新操作区域生效的互斥锁<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#pragma omp parallel</span><br><span class="line">&#123;</span><br><span class="line">	double tmp, B;</span><br><span class="line">	B = DoIt();</span><br><span class="line">	tmp = big_ugly(B);</span><br><span class="line">#pragma omp atomic</span><br><span class="line">	X += tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="练习3"><a href="#练习3" class="headerlink" title="练习3"></a>练习3</h4><ul>
 <li>在练习2中，你可能创建了一个数组来为每个线程存储他的计算数据</li>
@@ -465,7 +465,7 @@
 </li>
 <li>修改你在练习2中的Pi Program，从而避免由数组导致的false sharing</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;omp.h&gt;</span><br><span class="line"></span><br><span class="line">static long num_steps = 100000;</span><br><span class="line">#define num_threads 4</span><br><span class="line">double step;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    double pi, sum;</span><br><span class="line">    step = 1.0f/(double)num_steps;</span><br><span class="line">    omp_set_num_threads(num_threads);</span><br><span class="line">#pragma omp parallel</span><br><span class="line">    &#123;</span><br><span class="line">        int i; </span><br><span class="line">        double x=0;</span><br><span class="line">        int index=omp_get_thread_num();</span><br><span class="line">        int count=num_steps/num_threads;</span><br><span class="line">        for(i=index*count;i&lt;index*count+count;i++)&#123;</span><br><span class="line">            x=(i+0.5f)*step;</span><br><span class="line">#pragma omp atomic</span><br><span class="line">            sum += 4.0/(1.0+x*x);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;thread:%d, start:%d, end:%d, sum:%f\n&quot;, index, index*count, index*count+count, sum);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pi = step*sum;</span><br><span class="line">    printf(&quot;pi:%f\n&quot;, pi);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;omp.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">long</span> num_steps = <span class="number">100000</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> num_threads 4</span></span><br><span class="line"><span class="keyword">double</span> step;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> pi, sum;</span><br><span class="line">    step = <span class="number">1.0f</span>/(<span class="keyword">double</span>)num_steps;</span><br><span class="line">    omp_set_num_threads(num_threads);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp parallel</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> i; </span><br><span class="line">        <span class="keyword">double</span> x=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> index=omp_get_thread_num();</span><br><span class="line">        <span class="keyword">int</span> count=num_steps/num_threads;</span><br><span class="line">        <span class="keyword">for</span>(i=index*count;i&lt;index*count+count;i++)&#123;</span><br><span class="line">            x=(i+<span class="number">0.5f</span>)*step;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp atomic</span></span><br><span class="line">            sum += <span class="number">4.0</span>/(<span class="number">1.0</span>+x*x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"thread:%d, start:%d, end:%d, sum:%f\n"</span>, index, index*count, index*count+count, sum);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pi = step*sum;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"pi:%f\n"</span>, pi);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="并行循环-parallel-loop"><a href="#并行循环-parallel-loop" class="headerlink" title="并行循环(parallel loop)"></a>并行循环(parallel loop)</h2><h3 id="SPMD-Vs-worksharing"><a href="#SPMD-Vs-worksharing" class="headerlink" title="SPMD Vs. worksharing"></a>SPMD Vs. worksharing</h3><ul>
 <li>一条parallel指令创建了一个SPMD(single program multiple data)程序(即每个线程运行同样的冗余代码)</li>
 <li>worksharing<ul>
@@ -476,22 +476,22 @@
 </ul>
 </li>
 </ul>
-<h3 id="循环worksharing指令"><a href="#循环worksharing指令" class="headerlink" title="循环worksharing指令"></a>循环worksharing指令</h3><p>loop worksharing指令将循环中的迭代自动拆分为一组线程。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#pragma omp parallel</span><br><span class="line">&#123;</span><br><span class="line">#pragma omp for</span><br><span class="line">	for(i=0;i&lt;N;i++)&#123;</span><br><span class="line">		NEAT_STAFF(i);</span><br><span class="line">	&#125;</span><br><span class="line">	// 变量i被默认被自动设置为每个线程独享(private), 你也可以通过private(i)来显式指定</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="循环worksharing指令的例子"><a href="#循环worksharing指令的例子" class="headerlink" title="循环worksharing指令的例子"></a>循环worksharing指令的例子</h3><p>串行化版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for(int i=0; i&lt;N; ++i) a[i] = a[i] + b[i];</span><br></pre></td></tr></table></figure></p>
+<h3 id="循环worksharing指令"><a href="#循环worksharing指令" class="headerlink" title="循环worksharing指令"></a>循环worksharing指令</h3><p>loop worksharing指令将循环中的迭代自动拆分为一组线程。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp parallel</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp for</span></span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">		NEAT_STAFF(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 变量i被默认被自动设置为每个线程独享(private), 你也可以通过private(i)来显式指定</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="循环worksharing指令的例子"><a href="#循环worksharing指令的例子" class="headerlink" title="循环worksharing指令的例子"></a>循环worksharing指令的例子</h3><p>串行化版本<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;N; ++i) a[i] = a[i] + b[i];</span><br></pre></td></tr></table></figure></p>
 <p>OpenMP 并行区域版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#pragma omp parallel</span><br><span class="line">&#123;</span><br><span class="line">int i, id, nthrds, istart, iend;</span><br><span class="line">id = omp_get_thread_num();</span><br><span class="line">nthrds = omp_get_num_threads();</span><br><span class="line">istart = id * N / nthrds;</span><br><span class="line">iend = (id+1)*N / nthrds;</span><br><span class="line">for(i=istart; i&lt;iend; ++i)&#123;</span><br><span class="line">	a[i] = a[i] + b[i];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>OpenMP loop parallel版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#pragma omp paralle</span><br><span class="line">#pragma omp for</span><br><span class="line">for(int i=0; i&lt;N; ++i) a[i] = a[i] + b[i];</span><br></pre></td></tr></table></figure></p>
-<h3 id="parallel-loop-的组合版本"><a href="#parallel-loop-的组合版本" class="headerlink" title="parallel loop 的组合版本"></a>parallel loop 的组合版本</h3><p>以下两种方式是等效的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">double RES[MAX]; int i;</span><br><span class="line">#pragma omp parallel</span><br><span class="line">&#123;</span><br><span class="line">#pragma omp for</span><br><span class="line">for(int i=0; i&lt; MAX; ++i)&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">double RES[MAX]; int i;</span><br><span class="line">#pragma omp parallel for</span><br><span class="line">for(int i=0; i&lt; MAX; ++i)&#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>OpenMP loop parallel版本<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp paralle</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp for</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;N; ++i) a[i] = a[i] + b[i];</span><br></pre></td></tr></table></figure></p>
+<h3 id="parallel-loop-的组合版本"><a href="#parallel-loop-的组合版本" class="headerlink" title="parallel loop 的组合版本"></a>parallel loop 的组合版本</h3><p>以下两种方式是等效的<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> RES[MAX]; <span class="keyword">int</span> i;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp parallel</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp for</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt; MAX; ++i)&#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> RES[MAX]; <span class="keyword">int</span> i;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp parallel for</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt; MAX; ++i)&#123;...&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="如何使用loop并行"><a href="#如何使用loop并行" class="headerlink" title="如何使用loop并行"></a>如何使用loop并行</h3><ol>
 <li>找到计算密集型的循环</li>
 <li>使每个循环迭代都相互独立，这样并行线程就能以任意顺序执行而无需关注循环间的依赖</li>
-<li>放置合适的loop指令并测试<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int i,j, A[MAX];</span><br><span class="line">j = 5;</span><br><span class="line">for(int i=0; i&lt;MAX; ++i)&#123;</span><br><span class="line">j+=2;                    // 这里将引入循环依赖</span><br><span class="line">A[i] = big(j);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>放置合适的loop指令并测试<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i,j, A[MAX];</span><br><span class="line">j = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;MAX; ++i)&#123;</span><br><span class="line">j+=<span class="number">2</span>;                    <span class="comment">// 这里将引入循环依赖</span></span><br><span class="line">A[i] = big(j);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int i,j, A[MAX];</span><br><span class="line">#pragma omp parallel for</span><br><span class="line">for(int i=0; i&lt;MAX; ++i)&#123;</span><br><span class="line">int j = 5+ 2*i;          // 解除循环依赖</span><br><span class="line">A[i] = big(j);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i,j, A[MAX];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp parallel for</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;MAX; ++i)&#123;</span><br><span class="line"><span class="keyword">int</span> j = <span class="number">5</span>+ <span class="number">2</span>*i;          <span class="comment">// 解除循环依赖</span></span><br><span class="line">A[i] = big(j);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="合并-还原-Reduction"><a href="#合并-还原-Reduction" class="headerlink" title="合并/还原(Reduction)"></a>合并/还原(Reduction)</h3><ul>
 <li><p>这种情况应该如何处理呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">double ave=0.0f, A[MAX]; </span><br><span class="line">int i;</span><br><span class="line">for(i=0; i&lt;MAX; i++)&#123;</span><br><span class="line">	ave += A[i];</span><br><span class="line">&#125;</span><br><span class="line">ave = ave/MAX;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> ave=<span class="number">0.0f</span>, A[MAX]; </span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;MAX; i++)&#123;</span><br><span class="line">	ave += A[i];</span><br><span class="line">&#125;</span><br><span class="line">ave = ave/MAX;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>这种场景下我们把一组值叠加到一个变量中去，这是一个无法避免的循环依赖</p>
 </li>
@@ -511,7 +511,7 @@
 </li>
 <li>list中的变量必须在并行区域中被共享(即必须在闭合的并行代码块中)</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">double ave=0.0, A[MAX];</span><br><span class="line">int i;</span><br><span class="line">#pragma omp parallel for reduction(+:ave)</span><br><span class="line">for(int i=0; i&lt;MAX; ++i) &#123;</span><br><span class="line">	ave += A[i];</span><br><span class="line">&#125;</span><br><span class="line">ave = ave/MAX;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> ave=<span class="number">0.0</span>, A[MAX];</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp parallel for reduction(+:ave)</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;MAX; ++i) &#123;</span><br><span class="line">	ave += A[i];</span><br><span class="line">&#125;</span><br><span class="line">ave = ave/MAX;</span><br></pre></td></tr></table></figure>
 <p>注：这个例子实际上是练习2的non-false-sharing版本</p>
 <h3 id="OpenMP-合并-还原-操作符及初始值"><a href="#OpenMP-合并-还原-操作符及初始值" class="headerlink" title="OpenMP 合并/还原 操作符及初始值"></a>OpenMP 合并/还原 操作符及初始值</h3><table>
 <thead>
@@ -566,7 +566,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="练习4"><a href="#练习4" class="headerlink" title="练习4"></a>练习4</h4><p>回到练习二，并使用loop并行指令<br>目标是尽可能少得修改原串行指令代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;omp.h&gt;</span><br><span class="line"></span><br><span class="line">static long num_steps = 100000;</span><br><span class="line">double step;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    double pi, sum=0;</span><br><span class="line">    step = 1.0f/(double)num_steps;</span><br><span class="line">    int i; </span><br><span class="line">    double x=0;</span><br><span class="line">#pragma omp parallel for reduction(+:sum)</span><br><span class="line">    for(i=0;i&lt;num_steps;i++)&#123;</span><br><span class="line">        x=(i+0.5f)*step;</span><br><span class="line">        sum += 4.0/(1.0+x*x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pi = step*sum;</span><br><span class="line">    printf(&quot;pi:%f\n&quot;, pi);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="练习4"><a href="#练习4" class="headerlink" title="练习4"></a>练习4</h4><p>回到练习二，并使用loop并行指令<br>目标是尽可能少得修改原串行指令代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;omp.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">long</span> num_steps = <span class="number">100000</span>;</span><br><span class="line"><span class="keyword">double</span> step;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> pi, sum=<span class="number">0</span>;</span><br><span class="line">    step = <span class="number">1.0f</span>/(<span class="keyword">double</span>)num_steps;</span><br><span class="line">    <span class="keyword">int</span> i; </span><br><span class="line">    <span class="keyword">double</span> x=<span class="number">0</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> omp parallel for reduction(+:sum)</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;num_steps;i++)&#123;</span><br><span class="line">        x=(i+<span class="number">0.5f</span>)*step;</span><br><span class="line">        sum += <span class="number">4.0</span>/(<span class="number">1.0</span>+x*x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pi = step*sum;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"pi:%f\n"</span>, pi);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>值得注意的是：并行循环中的$sum^{‘}$会被初始化为0, 经过reduce后值会与初始值$sum_0$做合并，即 $ sum = sum_0 + sum^{‘} $。</p>
 <h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><h2 id="strace-观察shell管道使用的系统调用"><a href="#strace-观察shell管道使用的系统调用" class="headerlink" title="strace 观察shell管道使用的系统调用"></a>strace 观察shell管道使用的系统调用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strace -o strace.log -f sh -c &apos;cat ./test.asm | grep &quot;_start&quot;&apos;</span><br></pre></td></tr></table></figure>
 <p>上述命令用于追踪shell的管道命令的系统调用<br>注意，在shell中执行如下命令是看不到pipe的系统调用的，因为pipe是在shell中建立的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strace -o strace.log -f &apos;cat ./test.asm | grep &quot;_start&quot;&apos;</span><br></pre></td></tr></table></figure></p>
@@ -580,7 +580,7 @@
 <li>算法选择时切不可预设立场，一条道走到黑，需要具体问题具体分析。</li>
 </ul>
 <hr>
-<h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><h2 id="1-使用卡诺图优化Rule30计算"><a href="#1-使用卡诺图优化Rule30计算" class="headerlink" title="[1] 使用卡诺图优化Rule30计算"></a>[1] 使用卡诺图优化Rule30计算</h2><p>真值表卡诺图</p>
+<h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><h4 id="1-使用卡诺图优化Rule30计算"><a href="#1-使用卡诺图优化Rule30计算" class="headerlink" title="[1] 使用卡诺图优化Rule30计算"></a>[1] 使用卡诺图优化Rule30计算</h4><p>真值表卡诺图</p>
 <table>
 <thead>
 <tr>
@@ -617,85 +617,86 @@
 </table>
 <p>由卡诺图可知，上述真值表等价于：<br>( ~a ∩ ~( ~b ∩ ~c)) ∪ (a ∩ (~b ∩ ~c))<br>等价于<br>(~a ∩ (b ∪ c)) or (a ∩ ~(b ∪ c))<br>令 d = (b ∪ c)<br>则上式等价于<br>(~a ∩ d) or (a ∩ ~d)<br>等价于<br>a xor d<br>等价于<br>a xor (b ∪ c)</p>
 
-      
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
+        
       
-        <div class="post-tags">
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/side3/images/wechatpay.jpg" alt="wenjia duan 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+      
+
+      <footer class="post-footer">
           
-            <a href="/side3/tags/arts/" rel="tag"># arts</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
             
-              <a href="/side3/2019/08/16/ARTS-0x01/" rel="next" title="ARTS-0x01">
-                <i class="fa fa-chevron-left"></i> ARTS-0x01
-              </a>
+          
+          <div class="post-tags">
+            
+              <a href="/side3/tags/arts/" rel="tag"># arts</a>
+            
+              <a href="/side3/tags/openmp/" rel="tag"># openmp</a>
+            
+              <a href="/side3/tags/rule30/" rel="tag"># rule30</a>
             
           </div>
+        
 
-          <span class="post-nav-divider"></span>
+        
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/side3/2019/09/24/ARTS-0x02-ext/" rel="prev" title="ARTS-0x02-ext">
-                ARTS-0x02-ext <i class="fa fa-chevron-right"></i>
-              </a>
-            
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/side3/2019/08/16/ARTS-0x01/" rel="next" title="ARTS-0x01">
+                  <i class="fa fa-chevron-left"></i> ARTS-0x01
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/side3/2019/09/24/ARTS-0x02-ext/" rel="prev" title="ARTS-0x02-ext">
+                  ARTS-0x02-ext <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
           </div>
-        </div>
-      
-
-      
-      
-    </footer>
+        
+      </footer>
+    
   </div>
   
   
   
   </article>
 
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
           </div>
           
-
-
-          
-
+    
+    <div class="comments" id="gitalk-container"></div>
   
-    <div id="gitalk-container"></div>
-
-  
-
-
 
         </div>
-        
           
   
   <div class="sidebar-toggle">
@@ -706,129 +707,235 @@
     </div>
   </div>
 
-  <aside id="sidebar" class="sidebar">
-    
+  <aside class="sidebar">
     <div class="sidebar-inner">
-
+        
+        
+        
+        
       
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">wenjia duan</p>
-              <p class="site-description motion-element" itemprop="description">中年油腻大叔的日常</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/side3/archives/">
-              
-                  <span class="site-state-item-count">9</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">tags</span>
-                
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Algorithm"><span class="nav-number">2.</span> <span class="nav-text">Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目要求"><span class="nav-number">2.1.</span> <span class="nav-text">题目要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-算法"><span class="nav-number">2.2.1.</span> <span class="nav-text">A* 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#估值函数-heuristic-func-的选取"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">估值函数(heuristic func)的选取</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">2.3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-算法-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">A*算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-算法的问题"><span class="nav-number">2.3.2.</span> <span class="nav-text">A*算法的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划"><span class="nav-number">2.3.3.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#版本V1"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">版本V1:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#版本V2-OpenMP版本"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">版本V2: OpenMP版本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">2.4.</span> <span class="nav-text">结论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Review"><span class="nav-number">3.</span> <span class="nav-text">Review</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标题"><span class="nav-number">3.1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenMP简介"><span class="nav-number">3.2.</span> <span class="nav-text">OpenMP简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenMP基础定义：解决方案堆栈"><span class="nav-number">3.2.1.</span> <span class="nav-text">OpenMP基础定义：解决方案堆栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenMP-核心语法"><span class="nav-number">3.2.2.</span> <span class="nav-text">OpenMP 核心语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#练习1"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">练习1</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenMP概述"><span class="nav-number">3.2.3.</span> <span class="nav-text">OpenMP概述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建OpenMP线程"><span class="nav-number">3.3.</span> <span class="nav-text">创建OpenMP线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenMP-编程模型"><span class="nav-number">3.3.1.</span> <span class="nav-text">OpenMP 编程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenMP线程创建-并行区域"><span class="nav-number">3.3.2.</span> <span class="nav-text">OpenMP线程创建:并行区域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#练习2"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">练习2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步机制"><span class="nav-number">3.4.</span> <span class="nav-text">同步机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高级别的同步"><span class="nav-number">3.4.1.</span> <span class="nav-text">高级别的同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#低级别的同步"><span class="nav-number">3.4.2.</span> <span class="nav-text">低级别的同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#临界区-critical"><span class="nav-number">3.4.3.</span> <span class="nav-text">临界区(critical)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原子操作-Atomic"><span class="nav-number">3.4.4.</span> <span class="nav-text">原子操作(Atomic)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#练习3"><span class="nav-number">3.4.4.1.</span> <span class="nav-text">练习3</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并行循环-parallel-loop"><span class="nav-number">3.5.</span> <span class="nav-text">并行循环(parallel loop)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SPMD-Vs-worksharing"><span class="nav-number">3.5.1.</span> <span class="nav-text">SPMD Vs. worksharing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环worksharing指令"><span class="nav-number">3.5.2.</span> <span class="nav-text">循环worksharing指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环worksharing指令的例子"><span class="nav-number">3.5.3.</span> <span class="nav-text">循环worksharing指令的例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parallel-loop-的组合版本"><span class="nav-number">3.5.4.</span> <span class="nav-text">parallel loop 的组合版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用loop并行"><span class="nav-number">3.5.5.</span> <span class="nav-text">如何使用loop并行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并-还原-Reduction"><span class="nav-number">3.5.6.</span> <span class="nav-text">合并/还原(Reduction)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并-还原-Reduction-1"><span class="nav-number">3.5.7.</span> <span class="nav-text">合并/还原(Reduction)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenMP-合并-还原-操作符及初始值"><span class="nav-number">3.5.8.</span> <span class="nav-text">OpenMP 合并/还原 操作符及初始值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#练习4"><span class="nav-number">3.5.8.1.</span> <span class="nav-text">练习4</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tips"><span class="nav-number">4.</span> <span class="nav-text">Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#strace-观察shell管道使用的系统调用"><span class="nav-number">4.1.</span> <span class="nav-text">strace 观察shell管道使用的系统调用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Share"><span class="nav-number">5.</span> <span class="nav-text">Share</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Appendix"><span class="nav-number">6.</span> <span class="nav-text">Appendix</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-使用卡诺图优化Rule30计算"><span class="nav-number">6.1.</span> <span class="nav-text">[1] 使用卡诺图优化Rule30计算</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-number">1.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Algorithm"><span class="nav-number">2.</span> <span class="nav-text">Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目要求"><span class="nav-number">2.1.</span> <span class="nav-text">题目要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-算法"><span class="nav-number">2.2.1.</span> <span class="nav-text">A* 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#估值函数-heuristic-func-的选取"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">估值函数(heuristic func)的选取</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">2.3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-算法-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">A*算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-算法的问题"><span class="nav-number">2.3.2.</span> <span class="nav-text">A*算法的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划"><span class="nav-number">2.3.3.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#版本V1"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">版本V1:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#版本V2-OpenMP版本"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">版本V2: OpenMP版本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">2.4.</span> <span class="nav-text">结论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Review"><span class="nav-number">3.</span> <span class="nav-text">Review</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标题"><span class="nav-number">3.1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenMP简介"><span class="nav-number">3.2.</span> <span class="nav-text">OpenMP简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenMP基础定义：解决方案堆栈"><span class="nav-number">3.2.1.</span> <span class="nav-text">OpenMP基础定义：解决方案堆栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenMP-核心语法"><span class="nav-number">3.2.2.</span> <span class="nav-text">OpenMP 核心语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#练习1"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">练习1</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenMP概述"><span class="nav-number">3.2.3.</span> <span class="nav-text">OpenMP概述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建OpenMP线程"><span class="nav-number">3.3.</span> <span class="nav-text">创建OpenMP线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenMP-编程模型"><span class="nav-number">3.3.1.</span> <span class="nav-text">OpenMP 编程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenMP线程创建-并行区域"><span class="nav-number">3.3.2.</span> <span class="nav-text">OpenMP线程创建:并行区域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#练习2"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">练习2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步机制"><span class="nav-number">3.4.</span> <span class="nav-text">同步机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高级别的同步"><span class="nav-number">3.4.1.</span> <span class="nav-text">高级别的同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#低级别的同步"><span class="nav-number">3.4.2.</span> <span class="nav-text">低级别的同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#临界区-critical"><span class="nav-number">3.4.3.</span> <span class="nav-text">临界区(critical)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原子操作-Atomic"><span class="nav-number">3.4.4.</span> <span class="nav-text">原子操作(Atomic)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#练习3"><span class="nav-number">3.4.4.1.</span> <span class="nav-text">练习3</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并行循环-parallel-loop"><span class="nav-number">3.5.</span> <span class="nav-text">并行循环(parallel loop)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SPMD-Vs-worksharing"><span class="nav-number">3.5.1.</span> <span class="nav-text">SPMD Vs. worksharing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环worksharing指令"><span class="nav-number">3.5.2.</span> <span class="nav-text">循环worksharing指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环worksharing指令的例子"><span class="nav-number">3.5.3.</span> <span class="nav-text">循环worksharing指令的例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parallel-loop-的组合版本"><span class="nav-number">3.5.4.</span> <span class="nav-text">parallel loop 的组合版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用loop并行"><span class="nav-number">3.5.5.</span> <span class="nav-text">如何使用loop并行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并-还原-Reduction"><span class="nav-number">3.5.6.</span> <span class="nav-text">合并/还原(Reduction)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并-还原-Reduction-1"><span class="nav-number">3.5.7.</span> <span class="nav-text">合并/还原(Reduction)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenMP-合并-还原-操作符及初始值"><span class="nav-number">3.5.8.</span> <span class="nav-text">OpenMP 合并/还原 操作符及初始值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#练习4"><span class="nav-number">3.5.8.1.</span> <span class="nav-text">练习4</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tips"><span class="nav-number">4.</span> <span class="nav-text">Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#strace-观察shell管道使用的系统调用"><span class="nav-number">4.1.</span> <span class="nav-text">strace 观察shell管道使用的系统调用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Share"><span class="nav-number">5.</span> <span class="nav-text">Share</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Appendix"><span class="nav-number">6.</span> <span class="nav-text">Appendix</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-使用卡诺图优化Rule30计算"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">[1] 使用卡诺图优化Rule30计算</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        
+      </div>
       <!--/noindex-->
-      
 
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">wenjia duan</p>
+  <div class="site-description" itemprop="description">中年油腻大叔的日常</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/side3/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
       
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/side3/categories/">
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/side3/tags/">
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/wenjia-duan" title="GitHub &rarr; https://github.com/wenjia-duan" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:wenjia.duan@gmail.com" title="E-Mail &rarr; mailto:wenjia.duan@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/RX178_MKII" title="Weibo &rarr; https://weibo.com/RX178_MKII" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">wenjia duan</span>
-
-  
 </div>
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
-
-
-
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
-
-
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
 
         
 
+
+
+
+
+
+  
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+            
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            leancloudSelector(url).innerText = time;
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=NN40OVkYLnb4FtWiAAiAVMxF-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': 'NN40OVkYLnb4FtWiAAiAVMxF-gzGzoHsz',
+            'X-LC-Key': 'XcHCvTUTFBSDv6P1984pS52z',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+        if (localhost.test(document.URL)) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
 
 
 
@@ -838,202 +945,116 @@
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
   </div>
 
   
+  <script src="/side3/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/side3/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/side3/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/side3/js/utils.js?v=7.4.0"></script><script src="/side3/js/motion.js?v=7.4.0"></script>
+<script src="/side3/js/schemes/pisces.js?v=7.4.0"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+<script src="/side3/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/side3/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
 </script>
 
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/side3/lib/jquery/index.js?v=2.1.3"></script>
+    
   
 
   
-  
-    <script type="text/javascript" src="/side3/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
 
   
-  
-    <script type="text/javascript" src="/side3/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/side3/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/side3/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/side3/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/side3/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/side3/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/side3/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/side3/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/side3/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/side3/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/side3/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
 
   <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
    <script type="text/javascript">
         var gitalk = new Gitalk({
-          clientID: '42f7683a590089f7275e',
-          clientSecret: 'dd6de08badb3efd3fda14b8321ad471288732139',
+          clientID: '',
+          clientSecret: '',
           repo: 'wenjia-duan.github.io',
-          owner: 'wenjia-duan',
-          admin: ['wenjia-duan'],
+          owner: '',
+          admin: [''],
           id: location.pathname,
-          distractionFreeMode: 'true'
+          distractionFreeMode: ''
         })
         gitalk.render('gitalk-container')           
        </script>
 
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-
-
-  
-
-  
 
 </body>
 </html>
