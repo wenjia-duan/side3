@@ -1,11 +1,85 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
+
+
+
   
-  <title>Paxos从理论到实践(一) - Gavin@Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言这一系列文章是笔者学习和实现paxos协议的心得和体会。初步计划包含如下几个部分：  理解paxos协议 phxpaxos源码学习 实现自己的paxos版本  此为第一篇：初识paxos 初识paxos什么是paxos paxos是一种共识算法(consensus algorithm), 由Leslie Lamport在1990年提出。  共识即对某个提议(proposal)达成一致。为了达成">
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/side3/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/side3/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/side3/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/side3/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/side3/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/side3/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/side3/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="paxos,phxpaxos,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言这一系列文章是笔者学习和实现paxos协议的心得和体会。初步计划包含如下几个部分：  理解paxos协议 phxpaxos源码学习 实现自己的paxos版本  此为第一篇：初识paxos 初识paxos什么是paxos paxos是一种共识算法(consensus algorithm), 由Leslie Lamport在1990年提出。  共识即对某个提议(proposal)达成一致。为了达成">
 <meta name="keywords" content="paxos,phxpaxos">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Paxos从理论到实践(一)">
@@ -17,79 +91,244 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Paxos从理论到实践(一)">
 <meta name="twitter:description" content="前言这一系列文章是笔者学习和实现paxos协议的心得和体会。初步计划包含如下几个部分：  理解paxos协议 phxpaxos源码学习 实现自己的paxos版本  此为第一篇：初识paxos 初识paxos什么是paxos paxos是一种共识算法(consensus algorithm), 由Leslie Lamport在1990年提出。  共识即对某个提议(proposal)达成一致。为了达成">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/side3/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wenjia-duan.github.io/side3/2019/05/14/PhxPaxos-源码学习-一/">
+
+
+
+
+
+  <title>Paxos从理论到实践(一) | Gavin@Hexo</title>
   
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link href="/side3/side3/webfonts/ptserif/main.css" rel="stylesheet" type="text/css">
-  <link href="/side3/side3/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/side3/css/style.css">
-  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3352d4c467ff7f8f37b49ac866e63e31";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
 
 </head>
-</html>
-<body>
-  <div id="container">
-    <!-- blair add baidu tongji start... @2017.10.03 -->
-<!-- blair add baidu tongji end ! @2017.10.03 -->
 
-<header id="header">
-  <div id="header-outer" class="outer">
-    <div id="header-inner" class="inner">
-      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
-      <a id="logo" class="logo" href="/side3/"></a>
-      <nav id="main-nav">
-        
-          <a class="main-nav-link" href="/side3/">Home</a>
-        
-          <a class="main-nav-link" href="/side3/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/side3/categories">Categories</a>
-        
-          <a class="main-nav-link" href="/side3/wechat">Wechat</a>
-        
-          <a class="main-nav-link" href="/side3/about">About</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        <div id="search-form-wrap">
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wenjia-duan.github.io/side3"></form>
-        </div>
-      </nav>
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/side3/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gavin@Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+      
+        <p class="site-subtitle">gavin的blog</p>
+      
   </div>
-</header>
 
-    <br>
-    <section id="main" class="outer"><article id="post-PhxPaxos-源码学习-一" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
         
-  
-    <h1 class="article-title" itemprop="name">
-      Paxos从理论到实践(一)
-      <small class="article-detail-date-index">&nbsp; 2019-05-14</small>
-    </h1>
+        <li class="menu-item menu-item-home">
+          <a href="/side3/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/side3/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/side3/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/side3/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
   
 
+  
+</nav>
 
-        <div class="page-title"></div>
-        <br>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wenjia-duan.github.io/side3/side3/2019/05/14/PhxPaxos-源码学习-一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wenjia duan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/side3/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gavin@Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Paxos从理论到实践(一)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-14T00:11:27+08:00">
+                2019-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-meta">
-      <!--<a href="/side3/2019/05/14/PhxPaxos-源码学习-一/" class="article-date">
-  <time datetime="2019-05-13T16:11:27.000Z" itemprop="datePublished">2019-05-14</time>
-</a>-->
-      <!-- 
---><!-- by blair 160724 -->
-      <!-- by blair
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-      -->
-    </div>
-    <div class="article-entry" itemprop="articleBody">
+      
+
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这一系列文章是笔者学习和实现paxos协议的心得和体会。<br>初步计划包含如下几个部分：</p>
 <ul>
@@ -168,125 +407,404 @@
 <h3 id="3-学习者-learner"><a href="#3-学习者-learner" class="headerlink" title="3. 学习者(learner)"></a>3. 学习者(learner)</h3><p>按下不表</p>
 <h2 id="各种异常情况下的paxos算法推演"><a href="#各种异常情况下的paxos算法推演" class="headerlink" title="各种异常情况下的paxos算法推演"></a>各种异常情况下的paxos算法推演</h2>
       
-     <!-- by blair add this if sentence at 20160725 -->
-      <br>
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
       
-<div id="bottom-donation-section">
-<span style="font-size: 1.0em; padding:0em 1em 0.5em 1em; margin: 0 auto;">
-  <strong style="vertical-align: top;">分享到:</strong>
-    <div class="j_handlclick" style="background: url(/images/tech-logos/share_facebook_icon.jpg);background-size: contain;display: inline-block; width:50px; height:50px" href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank">
-    </div>
-    <div class="j_handlclick" style="background: url(/images/tech-logos/share_weibo_icon.png);background-size: contain;display: inline-block; width:50px; height:50px" href="https://service.weibo.com/share/share.php?url" target="_blank">
-    </div>
-    <div class="j_handlclick" style="background: url(/images/tech-logos/share_wechat_icon.jpg);background-size: contain;display: inline-block; width:50px; height:50px" href="https://api.addthis.com/oexchange/0.8/forward/wechat/offer?url=" target="_blank">
-    </div>
-    <div class="j_handlclick" style="background: url(/images/tech-logos/share_twitter_icon.jpg);background-size: contain;display: inline-block; width:50px; height:50px" href="https://twitter.com/intent/tweet?url=" target="_blank">
-    </div>
-  <br>  
-  <br>  
-  &nbsp;&nbsp;如果您觉得这篇文章对您的学习很有帮助, 请您也分享它, 让它能再次帮助到更多的需要学习的人.
-您的<a href="/support/"><strong>支持</strong></a>将鼓励我继续创作 !
-  <br>  
+        <div class="post-tags">
+          
+            <a href="/side3/tags/paxos/" rel="tag"># paxos</a>
+          
+            <a href="/side3/tags/phxpaxos/" rel="tag"># phxpaxos</a>
+          
+        </div>
+      
 
-</span>
-<!--
-<h3 id="bottom-donation-title">支持 让文章变得更优质</h3>
-<div>
-<a id="bottom-donation-button" href="/support">点我 赞助 作者</a>
-</div>
--->
-</div>
-<div class="well">
-  <!--
-  原创文章，转载请注明： 转载自<a href="http://52binge.github.io"> Blair Chan's Blog</a>，作者：
-  <a href="/about">Blair Chan</a> <br>
-  -->
-  本文基于<a target="_blank" title="Creative Commons Attribution 4.0 international License" href="https://creativecommons.org/licenses/by-nc/4.0/">署名4.0国际许可协议</a>发布，转载请保留本文署名和文章链接。 如您有任何授权方面的协商，请邮件联系我。
-</div>
- <!-- by blair add 160724-->
-    
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/side3/2019/04/30/认识正确的自己/" rel="next" title="认识正确的自己">
+                <i class="fa fa-chevron-left"></i> 认识正确的自己
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/side3/2019/08/16/ARTS-0x00-1/" rel="prev" title="ARTS-0x00">
+                ARTS-0x00 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
     </div>
-    
-      <div class="article-toc">
-        <h3>Contents</h3>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#初识paxos"><span class="toc-number"></span> <span class="toc-text">初识paxos</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是paxos"><span class="toc-number">1.</span> <span class="toc-text">什么是paxos</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么需要共识-paxos"><span class="toc-number">2.</span> <span class="toc-text">为什么需要共识(paxos)?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Paxos算法描述-基本上是翻译paxos-simple这篇论文）"><span class="toc-number">3.</span> <span class="toc-text">Paxos算法描述(基本上是翻译paxos simple这篇论文）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-提议者-proposal"><span class="toc-number">3.1.</span> <span class="toc-text">1. 提议者(proposal)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-接受者-acceptor"><span class="toc-number">3.2.</span> <span class="toc-text">2. 接受者(acceptor)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-学习者-learner"><span class="toc-number">3.3.</span> <span class="toc-text">3. 学习者(learner)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各种异常情况下的paxos算法推演"><span class="toc-number">4.</span> <span class="toc-text">各种异常情况下的paxos算法推演</span></a></li></ol>
-      </li></div>
-    
-    
-      <footer class="article-footer">
-        <!-- <div class="well" style="width:100px; height:30px;"></div>  by blair-->
-        
- <!-- by blair add 160724-->
-        <!--
-        <div style="width:100px; height:30px;"></div> by blair add 160724
-        -->
-        
-  <div class="article-tag">
-    <a class="article-tag-link" href="/side3/tags/paxos/">paxos</a><span></span><a class="article-tag-link" href="/side3/tags/phxpaxos/">phxpaxos</a>
   </div>
 
 
-      </footer>
-    
-  </div>
+          </div>
+          
+
+
+          
+
   
-    
-<nav id="article-nav">
-  
-    <a href="/side3/2019/08/16/ARTS-0x00-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-title"><span>&lt;</span>&nbsp;
+
+
+
+        </div>
         
-          ARTS-0x00
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wenjia duan</p>
+              <p class="site-description motion-element" itemprop="description">中年油腻大叔的日常</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/side3/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#初识paxos"><span class="nav-number"></span> <span class="nav-text">初识paxos</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是paxos"><span class="nav-number">1.</span> <span class="nav-text">什么是paxos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要共识-paxos"><span class="nav-number">2.</span> <span class="nav-text">为什么需要共识(paxos)?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Paxos算法描述-基本上是翻译paxos-simple这篇论文）"><span class="nav-number">3.</span> <span class="nav-text">Paxos算法描述(基本上是翻译paxos simple这篇论文）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-提议者-proposal"><span class="nav-number">3.1.</span> <span class="nav-text">1. 提议者(proposal)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-接受者-acceptor"><span class="nav-number">3.2.</span> <span class="nav-text">2. 接受者(acceptor)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-学习者-learner"><span class="nav-number">3.3.</span> <span class="nav-text">3. 学习者(learner)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各种异常情况下的paxos算法推演"><span class="nav-number">4.</span> <span class="nav-text">各种异常情况下的paxos算法推演</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
         
       </div>
-    </a>
-  
-  
-    <a href="/side3/2019/04/30/认识正确的自己/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">认识正确的自己&nbsp;<span>&gt;</span></div>
-    </a>
-  
-</nav>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wenjia duan</span>
 
   
-</article>
+</div>
 
-</section>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 wenjia duan&nbsp;
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/52binge/hexo-theme-blairos">blairos</a>
-    </div>
-  </div>
-</footer>
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    extensions: ["tex2jax.js"],
-    jax: ["input/TeX"],
-    tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
-      displayMath: [ ['$$','$$']],
-      processEscapes: true
-    }
-  });
-</script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,http://myserver.com/MathJax/config/local/local.js">
-</script>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
 
     
 
-<script src="/side3/side3/js/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/side3/fancybox/jquery.fancybox.css">
-  <script src="/side3/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/side3/js/script.js"></script>
-
   </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/side3/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/side3/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/side3/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/side3/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/side3/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/side3/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/side3/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/side3/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/side3/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/side3/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/side3/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/side3/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/side3/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
 </body>
 </html>
