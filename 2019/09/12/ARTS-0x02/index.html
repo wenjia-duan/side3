@@ -29,7 +29,7 @@
     version: '7.4.0',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
+    copycode: {"enable":true,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
@@ -44,7 +44,7 @@
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
+    path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
@@ -204,6 +204,17 @@
     <a href="/side3/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-commonweal">
+      
+    
+
+    <a href="/side3/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
       <li class="menu-item menu-item-search">
         <a href="javascript:;" class="popup-trigger">
         
@@ -315,14 +326,6 @@
             </span>
           
 
-          
-            <span id="/side3/2019/09/12/ARTS-0x02/" class="post-meta-item leancloud_visitors" data-flag-title="ARTS-0x02" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
           
 
         </div>
@@ -736,8 +739,7 @@
   <p class="site-author-name" itemprop="name">wenjia duan</p>
   <div class="site-description" itemprop="description">中年油腻大叔的日常</div>
 </div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
+  <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
           <a href="/side3/archives/">
@@ -774,7 +776,6 @@
       </div>
     
   </nav>
-</div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
       
@@ -806,7 +807,7 @@
       
         
       
-        <a href="https://weibo.com/RX178_MKII" title="Weibo &rarr; https://weibo.com/RX178_MKII" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+        <a href="https://weibo.com/RX178-MKII" title="Weibo &rarr; https://weibo.com/RX178-MKII" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
       </span>
     
   </div>
@@ -842,100 +843,6 @@
 
 
 
-  
-  <script>
-  function leancloudSelector(url) {
-    return document.getElementById(url).querySelector('.leancloud-visitors-count');
-  }
-  if (CONFIG.page.isPost) {
-    function addCount(Counter) {
-      var visitors = document.querySelector('.leancloud_visitors');
-      var url = visitors.getAttribute('id').trim();
-      var title = visitors.getAttribute('data-flag-title').trim();
-
-      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
-        .then(response => response.json())
-        .then(({ results }) => {
-          if (results.length > 0) {
-            var counter = results[0];
-            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
-              .then(response => response.json())
-              .then(() => {
-                leancloudSelector(url).innerText = counter.time + 1;
-              })
-            
-              .catch(error => {
-                console.log('Failed to save visitor count', error);
-              })
-          } else {
-              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
-            
-          }
-        })
-        .catch(error => {
-          console.log('LeanCloud Counter Error', error);
-        });
-    }
-  } else {
-    function showTime(Counter) {
-      var visitors = document.querySelectorAll('.leancloud_visitors');
-      var entries = [...visitors].map(element => {
-        return element.getAttribute('id').trim();
-      });
-
-      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
-        .then(response => response.json())
-        .then(({ results }) => {
-          if (results.length === 0) {
-            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
-              element.innerText = 0;
-            });
-            return;
-          }
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            leancloudSelector(url).innerText = time;
-          }
-          for (var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = leancloudSelector(url);
-            if (element.innerText == '') {
-              element.innerText = 0;
-            }
-          }
-        })
-        .catch(error => {
-          console.log('LeanCloud Counter Error', error);
-        });
-    }
-  }
-
-  fetch('https://app-router.leancloud.cn/2/route?appId=NN40OVkYLnb4FtWiAAiAVMxF-gzGzoHsz')
-    .then(response => response.json())
-    .then(({ api_server }) => {
-      var Counter = (method, url, data) => {
-        return fetch(`https://${api_server}/1.1${url}`, {
-          method: method,
-          headers: {
-            'X-LC-Id': 'NN40OVkYLnb4FtWiAAiAVMxF-gzGzoHsz',
-            'X-LC-Key': 'XcHCvTUTFBSDv6P1984pS52z',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data)
-        });
-      };
-      if (CONFIG.page.isPost) {
-        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
-        if (localhost.test(document.URL)) return;
-        addCount(Counter);
-      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
 
 
 
@@ -948,6 +855,8 @@
   </div>
 
   
+
+
   <script src="/side3/lib/anime.min.js?v=3.1.0"></script>
   <script src="/side3/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/side3/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
@@ -1040,21 +949,24 @@
 
   
 
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-   <script type="text/javascript">
-        var gitalk = new Gitalk({
-          clientID: '',
-          clientSecret: '',
-          repo: 'wenjia-duan.github.io',
-          owner: '',
-          admin: [''],
-          id: location.pathname,
-          distractionFreeMode: ''
-        })
-        gitalk.render('gitalk-container')           
-       </script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
 
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '42f7683a590089f7275e',
+      clientSecret: 'dd6de08badb3efd3fda14b8321ad471288732139',
+      repo: 'wenjia-duan.github.io',
+      owner: 'wenjia-duan',
+      admin: ['wenjia-duan'],
+      id: 'b7db827c37cd8e3a6d41bd7ed03b0703',
+        language: window.navigator.language || window.navigator.userLanguage,
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
 
 </body>
 </html>
