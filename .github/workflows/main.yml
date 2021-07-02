@@ -41,4 +41,5 @@ jobs:
           # 云开发环境 Id
           envId: ${{ secrets.ENV_ID  }}
           # Github 项目静态文件的路径
-          staticDestPath: side3
+          staticSrcPath: ./
+          staticDestPath: ./side3
